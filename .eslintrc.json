@@ -2,9 +2,10 @@
   "root": true,
   "ignorePatterns": ["node_modules/*"],
   "extends": ["next/core-web-vitals", "eslint:recommended", "prettier"],
+  "plugins": ["check-file"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["**/*.ts", "**/*.tsx"],
       "parser": "@typescript-eslint/parser",
       "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -26,8 +27,14 @@
           "error",
           {
             "groups": [
-              ["builtin", "external"],
-              ["internal", "parent", "sibling", "index"]
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index",
+              "object",
+              "type"
             ],
             "pathGroups": [
               {
@@ -36,13 +43,13 @@
                 "position": "before"
               },
               {
-                "pattern": "next/**",
+                "pattern": "next{,/**}",
                 "group": "builtin",
                 "position": "before"
               }
             ],
             "pathGroupsExcludedImportTypes": ["react"],
-            "newlines-between": "always-and-inside-groups",
+            "newlines-between": "always",
             "alphabetize": { "order": "asc", "caseInsensitive": true }
           }
         ],
