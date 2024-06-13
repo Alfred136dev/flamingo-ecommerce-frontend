@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint --fix",
     "format": "prettier --write --ignore-path .gitignore .",
-    "typecheck": "tsc --pretty --noEmit",
+    "typecheck": "bash -c tsc --pretty --noEmit",
     "test": "jest -o --passWithNoTests",
     "precommit": "yarn format && yarn lint && yarn typecheck && yarn test",
     "prepare": "husky",
@@ -18,7 +18,8 @@
   "dependencies": {
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
@@ -46,5 +47,16 @@
     "prettier-plugin-tailwindcss": "^0.6.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn format",
+      "yarn lint",
+      "yarn typecheck",
+      "yarn test"
+    ],
+    "*.{html,css,less,ejs}": [
+      "yarn format"
+    ]
   }
 }
