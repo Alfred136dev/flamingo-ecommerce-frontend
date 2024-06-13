@@ -1,0 +1,9 @@
+{
+  "*.{js,jsx,ts,tsx}": [
+    "yarn format",
+    "yarn lint",
+    "yarn typecheck",
+    "yarn test"
+  ],
+  "*.{html,css,less,ejs}": ["yarn format"]
+}
